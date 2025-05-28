@@ -45,4 +45,33 @@ A estrutura de diretórios planejada para o projeto é:
 ┗ 
 
 ---
+## 🔧 Instruções de Instalação
+
+### ✔️ Pré-requisitos
+
+* C++11 ou superior.
+* Compilador g++ (ou outro compatível com C++11).
+* Makefile.
+
+### ✔️ Passos para Instalação
+
+1.  **Clone o repositório:** 
+    ```bash
+    git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+    cd seu-repositorio
+    ```
+2.  **Compile o projeto:**
+    Usando o Makefile fornecido:
+    ```bash
+    make
+    ```
+    
+3.  **Execute o programa:** 
+    ```bash
+    ./avaliador
+    ```
+Para limpar os arquivos de compilação (usando o Makefile):
+    ```bash
+    make clean
+    ```
 
