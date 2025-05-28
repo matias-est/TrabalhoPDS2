@@ -1,25 +1,48 @@
 # 🎬 Sistema de Avaliação de Filmes 🎬
-## Apresentação do Problema: 
-  Atualmente a indústria cinematográfica foi tomada por sistemas de avaliações de filmes focados na caracterização do avaliador. Ou seja, as pessoas têm avaliado os filmes pensando não só no filme mas também no que as outras pessoas vão pensar sobre a avaliação dela. Por isso, desenvolvemos um sistema que busca preservar o anonimato e a sinceridade, mas ao mesmo tempo permitindo com que cada usuário tenha seu próprio perfil dentro da plataforma. \
-  \
-  Nosso sistema permitirá que cada usuário possa criar contas (seguindo os padrões de semi anonimato), cadastrar filmes, realizar avaliações (de 1 a 5) e comentar sobre os filmes registrados.
-  
----
 
-## Visão Geral da Solução:
-O sistema foi desenvolvido em C++ e funciona via terminal. Ele permite que os usuários criem contas utilizando **nome completo e data de nascimento**, dados que são mantidos em **sigilo absoluto**. O nome de usuário visível na plataforma segue o padrão:
+## 🎞️ Apresentação do Problema 🎞️
 
-> **(Personagem de Filme) + (Sobrenome do Usuário)**
+Atualmente a indústria cinematográfica foi tomada por sistemas de avaliações de filmes focados na caracterização do avaliador. Ou seja, as pessoas têm avaliado os filmes pensando não só no filme mas também no que as outras pessoas vão pensar sobre a avaliação dela. Por isso, desenvolvemos um sistema que busca preservar o anonimato e a sinceridade, mas ao mesmo tempo permitindo com que cada usuário tenha seu próprio perfil dentro da plataforma. 
 
-Exemplos:
-- `BatmanSilva`
-- `YodaPereira`
-- `HermioneSantos`
 
-Após a autenticação, os usuários podem:
-- Cadastrar filmes.
-- Avaliar filmes (notas de 1 a 5).
-- Adicionar comentários.
-- Visualizar informações detalhadas dos filmes, como média das avaliações e comentários.
+Este projeto visa desenvolver um sistema de avaliação de filmes que busca resgatar a sinceridade e preservar o semi-anonimato do usuário, ao mesmo tempo em que permite a personalização de perfis.  
 
 ---
+
+## 🚀 Visão Geral da Solução:
+
+
+O nosso Sistema de Avaliação de Filmes será desenvolvido em C++ e operado via interface de terminal de comando. Ele permitirá que os usuários criem contas fornecendo nome completo e data de nascimento; esses dados pessoais serão mantidos em sigilo absoluto pela plataforma. Para interação pública, o nome de usuário seguirá o padrão: `(personagem de filme) (sobrenome do usuário)`, buscando um equilíbrio entre personalização e anonimato. Este equilíbrio é importante para garantir a liberdade dos usuários para efetuarem comentários honestos sem se preocupar com a retaliação de cinéfilos que discordam da mesma.
+
+
+As funcionalidades principais incluem:
+* Cadastro de novos filmes (título e gênero).
+* Avaliação de filmes existentes (notas de 1 a 5).
+* Inclusão de comentários sobre os filmes.
+* Visualização de informações detalhadas dos filmes: avaliações individuais, comentários e a média das notas.
+* Busca de filmes por gênero ou por título (com tolerância a pequenas variações para evitar duplicidade e facilitar a busca).
+* O sistema também buscará evitar o cadastro duplicado de filmes, mesmo com pequenas variações nos títulos (ex: "Carros" vs "Os Carros").
+
+---
+
+## 🗂️ Estrutura do Projeto
+
+A estrutura de diretórios planejada para o projeto é:
+
+🗂️ SistemaAvaliacaoFilmes \
+┣ 📄 README.md \
+┣ 📄 user_stories.md \
+┣ 📄 crc_cards.md \
+┣ 📄 makefile \
+┣ 📁 src/ \
+┃ ┣ 📄 main.cpp \
+┃ ┣ 📄 usuario.h \
+┃ ┣ 📄 usuario.cpp \
+┃ ┣ 📄 filme.h \
+┃ ┣ 📄 filme.cpp \
+┃ ┣ 📄 avaliacao.h \
+┃ ┗ 📄 avaliacao.cpp \
+┗ 
+
+---
+
