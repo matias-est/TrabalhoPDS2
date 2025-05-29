@@ -59,8 +59,14 @@
 ---
 ## Classe: BancoDeDados
 - **Responsabilidades:**
+* Gerenciar os dados de todos os usuários cadastrados. 
+* Gerenciar os dados de todos os filmes cadastrados. 
+* Fornecer funcionalidades de busca de filmes (por título, gênero).
+* Garantir que não existirão filmes duplicados. 
+* Processar o login de usuários. 
+* Carregar/Salvar dados. 
     
 - **Colaboradores:**
-    
----
+* Usuario 
+* Filme 
 
