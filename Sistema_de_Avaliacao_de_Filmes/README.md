@@ -9,7 +9,7 @@ Este projeto visa desenvolver um sistema de avaliação de filmes que busca resg
 
 ---
 
-## 🚀 Visão Geral da Solução:
+## 🚀 Visão Geral da Solução
 
 
 O nosso Sistema de Avaliação de Filmes será desenvolvido em C++ e operado via interface de terminal de comando. Ele permitirá que os usuários criem contas fornecendo nome completo e data de nascimento; esses dados pessoais serão mantidos em sigilo absoluto pela plataforma. Para interação pública, o nome de usuário seguirá o padrão: `(personagem de filme) (sobrenome do usuário)`, buscando um equilíbrio entre personalização e anonimato. Este equilíbrio é importante para garantir a liberdade dos usuários para efetuarem comentários honestos sem se preocupar com a retaliação de cinéfilos que discordam da mesma.
@@ -52,28 +52,36 @@ A estrutura de diretórios planejada para o projeto é:
 * Compilador g++ (ou outro compatível com C++11).
 * Makefile.
 
-### ✔️ Passos para Instalação
+## ⚙️ Passos para Instalação
 
-1.  **Clone o repositório:** 
-    ```bash
-    git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
-    cd seu-repositorio
-    ```
+1.  **Clone o repositório:**
+    * Abra o seu terminal ou prompt de comando.
+    * Use o comando `git clone` para baixar uma cópia do projeto do GitHub para o seu computador.
+      
+        ```bash
+        git clone [https://github.com/matias-est/TrabalhoPDS2.git](https://github.com/matias-est/TrabalhoPDS2.git)
+        ```
+    * Após o download ser concluído, entre na pasta do projeto que foi criada:
+      
+        ```bash
+        cd TrabalhoPDS2
+        ```
+
 2.  **Compile o projeto:**
-    Usando o Makefile fornecido:
-    ```bash
-    make
-    ```
+    * Dentro da pasta do projeto (`TrabalhoPDS2`), utilize o comando `make` para compilar o código-fonte.
+      
+        ```bash
+        make
+        ```
     
-3.  **Execute o programa:** 
-    ```bash
-    ./avaliador
-    ```
-4. **Para limpar os arquivos de compilação (usando o Makefile):**
-    ```bash
-    make clean
-    ```
----
+3.  **Execute o programa:**
+    * Após a compilação bem-sucedida, um arquivo executável chamado avaliador será criado.
+    * Para rodar o programa, execute o seguinte comando no terminal, ainda dentro da pasta do projeto:
+      
+        ```bash
+        ./avaliador
+        ```
+
 ## 🤝 Como Contribuir
 
 Se desejar contribuir ou reportar problemas:
