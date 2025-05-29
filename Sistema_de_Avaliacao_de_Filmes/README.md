@@ -21,8 +21,7 @@ As funcionalidades principais incluem:
 * Inclusão de comentários sobre os filmes.
 * Visualização de informações detalhadas dos filmes: avaliações individuais, comentários e a média das notas.
 * Busca de filmes por gênero ou por título (com tolerância a pequenas variações para evitar duplicidade e facilitar a busca).
-* O sistema também buscará evitar o cadastro duplicado de filmes, mesmo com pequenas variações nos títulos (ex: "Carros" vs "Os Carros").
-
+* O cadastro duplicado de filmes será evitado pelo sistema, mesmo com pequenas variações nos títulos (ex: "Carros" vs "Os Carros").
 ---
 
 ## 🗂️ Estrutura do Projeto
