@@ -63,10 +63,4 @@
 - **Colaboradores:**
     
 ---
-## Classe: Main
-- **Responsabilidades:**
-    
-- **Colaboradores:**
 
-
----
