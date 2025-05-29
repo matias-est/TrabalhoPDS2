@@ -74,4 +74,23 @@ Para limpar os arquivos de compilação (usando o Makefile):
     ```bash
     make clean
     ```
+---
+## 🤝 Como Contribuir
 
+Se desejar contribuir ou reportar problemas:
+1.  Para bugs ou sugestões de funcionalidades, crie uma "Issue" no repositório GitHub.
+2.  Se desejar contribuir com código:
+    * Faça um "Fork" do repositório.
+    * Crie uma nova "Branch" para sua funcionalidade ou correção (git checkout -b minha-funcionalidade).
+    * Faça seus "Commits" seguindo um padrão claro de mensagens.
+    * Envie um "Pull Request" para a branch principal.
+
+---
+
+Desenvolvedores:
+
+* Matias Machado de Faria
+* Evandro Eurico Morais Penido
+* Arthur de Almeida Souza
+* Gustavo Marques Mendes
+* Bernardo Marques Mendes
