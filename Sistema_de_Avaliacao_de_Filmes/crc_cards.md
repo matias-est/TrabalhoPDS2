@@ -33,27 +33,27 @@
 ---
 ## Classe: Avaliacao
 
-*Responsabilidades:*
+- **Responsabilidades:**
 * Armazenar a nota (1 a 5).
 * Armazenar a data da avaliação (opcional).
 * Manter referência ao usuário que fez a avaliação.
 * Manter referência ao filme que foi avaliado.
 
-*Colaboradores:*
+- **Colaboradores:**
 * Usuario (para identificar o autor)
 * Filme (para identificar o objeto da avaliação)
 * BancoDeDados
 
 ---
 ## Classe: Comentario (Considerar se será uma classe distinta ou atributo de Avaliacao/Filme)
-*Responsabilidades:*
+- **Responsabilidades:**
 * Armazenar o texto do comentário.
 * Armazenar a data do comentário (opcional).
 * Manter referência ao usuário que fez o comentário.
 * Manter referência ao filme que foi comentado.
 
 ---
-*Colaboradores:*
+- **Colaboradores:**
 * Usuario (para identificar o autor)
 * Filme (para identificar o objeto do comentário)
 ---
