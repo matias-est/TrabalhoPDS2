@@ -43,6 +43,19 @@
 * Usuario (para identificar o autor)
 * Filme (para identificar o objeto da avaliação)
 * BancoDeDados
+
+---
+## Classe: Comentario (Considerar se será uma classe distinta ou atributo de Avaliacao/Filme)
+*Responsabilidades:*
+* Armazenar o texto do comentário.
+* Armazenar a data do comentário (opcional).
+* Manter referência ao usuário que fez o comentário.
+* Manter referência ao filme que foi comentado.
+
+---
+*Colaboradores:*
+* Usuario (para identificar o autor)
+* Filme (para identificar o objeto do comentário)
 ---
 ## Classe: BancoDeDados
 - **Responsabilidades:**
