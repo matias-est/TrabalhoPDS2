@@ -28,14 +28,21 @@
 * Avaliacao 
 * Comentario 
 * Usuario (para identificar quem fez as avaliações e os comentários)
-* BancoDeDados (para buscar e armazenar)
+* BancoDeDados 
 
 ---
 ## Classe: Avaliacao
-- **Responsabilidades:**
-    
-- **Colaboradores:**
-    
+
+*Responsabilidades:*
+* Armazenar a nota (1 a 5).
+* Armazenar a data da avaliação (opcional).
+* Manter referência ao usuário que fez a avaliação.
+* Manter referência ao filme que foi avaliado.
+
+*Colaboradores:*
+* Usuario (para identificar o autor)
+* Filme (para identificar o objeto da avaliação)
+* BancoDeDados
 ---
 ## Classe: BancoDeDados
 - **Responsabilidades:**
