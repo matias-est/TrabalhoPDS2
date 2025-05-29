@@ -70,7 +70,7 @@ A estrutura de diretórios planejada para o projeto é:
     ```bash
     ./avaliador
     ```
-Para limpar os arquivos de compilação (usando o Makefile):
+4. **Para limpar os arquivos de compilação (usando o Makefile):**
     ```bash
     make clean
     ```
