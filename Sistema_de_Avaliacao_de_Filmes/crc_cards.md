@@ -15,6 +15,7 @@
 * BancoDeDados 
   
 ---
+
 ## Classe: Filme
 - **Responsabilidades:**
 * Armazenar informações do filme (título, gênero).
@@ -31,6 +32,7 @@
 * BancoDeDados 
 
 ---
+
 ## Classe: Avaliacao
 
 - **Responsabilidades:**
@@ -45,6 +47,7 @@
 * BancoDeDados
 
 ---
+
 ## Classe: Comentario (Considerar se será uma classe distinta ou atributo de Avaliacao/Filme)
 - **Responsabilidades:**
 * Armazenar o texto do comentário.
@@ -52,11 +55,12 @@
 * Manter referência ao usuário que fez o comentário.
 * Manter referência ao filme que foi comentado.
 
----
 - **Colaboradores:**
 * Usuario (para identificar o autor)
 * Filme (para identificar o objeto do comentário)
+  
 ---
+
 ## Classe: BancoDeDados
 - **Responsabilidades:**
 * Gerenciar os dados de todos os usuários cadastrados. 
