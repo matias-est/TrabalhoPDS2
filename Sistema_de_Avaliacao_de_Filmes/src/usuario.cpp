@@ -37,7 +37,9 @@ std::string Usuario::obterSobrenome() const {
 
 std::string Usuario::gerarNomePublico(const std::string& sobrenome) const {
     std::vector<std::string> personagens = {
-        "Neo", "Trinity", "Yoda", "Leia", "Frodo", "Gandalf", "Vader", "Hermione", "Batman"
+        "Neo", "Trinity", "Yoda", "Leia", "Frodo", "Gandalf", "Vader", "Hermione", "Batman",
+        "IronMan", "Thor", "Loki", "BlackPanther", "Joker", "Katniss", "Buzz", "Woody",
+        "Elsa", "Moana", "Shrek", "Donkey", "Simba", "Dory", "Wolverine", "Deadpool"
     };
     srand(time(0) + rand());
     std::string personagem = personagens[rand() % personagens.size()];
