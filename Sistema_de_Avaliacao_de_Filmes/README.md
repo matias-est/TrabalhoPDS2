@@ -17,6 +17,7 @@ O nosso Sistema de Avaliação de Filmes será desenvolvido em C++ e operado via
 
 As funcionalidades principais incluem:
 * Cadastro de novos filmes (título e gênero).
+* Geração de nome de usuário com base em personagem de filme mais o sobrenome do usuário.
 * Avaliação de filmes existentes (notas de 1 a 5).
 * Inclusão de comentários sobre os filmes.
 * Visualização de informações detalhadas dos filmes: avaliações individuais, comentários e a média das notas.
