@@ -1,26 +1,31 @@
-# Flags de compilação
-CXXFLAGS = -std=c++11 -Wall -Wextra
+CXX = g++
 
-# Arquivos fonte
-SRC = src/main.cpp src/usuario.cpp src/filme.cpp src/avaliacao.cpp src/banco_de_dados.cpp
+CXXFLAGS = -std=c++11 -Wall -Wextra -pedantic -Isrc
 
-# Arquivo de saída
+SRCDIR = src
+
+SRCS = $(SRCDIR)/main.cpp \
+       $(SRCDIR)/usuario.cpp \
+       $(SRCDIR)/filme.cpp \
+       $(SRCDIR)/avaliacao.cpp \
+       $(SRCDIR)/banco_de_dados.cpp
+
+OBJS = $(SRCS:.cpp=.o)
+
 TARGET = avaliador
 
-# Regra principal
+.PHONY: all clean run
+
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(TARGET)
 
-# Executar o programa
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 run: $(TARGET)
 	./$(TARGET)
 
-# Limpar arquivos compilados
 clean:
-	rm -f $(TARGET)
-
-# Limpar tudo
-purge: clean
-	rm -rf *.o
+	rm -f $(OBJS) $(TARGET)
