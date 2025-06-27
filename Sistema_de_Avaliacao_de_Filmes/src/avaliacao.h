@@ -6,6 +6,7 @@
 class Avaliacao
 {
 public:
+// Construtor que define quem avaliou e qual foi a nota.
     Avaliacao(const std::string &usuario, int nota);
 
     int getNota() const;
