@@ -66,6 +66,12 @@ A estrutura de diretórios planejada para o projeto é:
         ```bash
         cd TrabalhoPDS2
         ```
+    * Depois nsa pasta principal :
+      
+        ```bash
+        cd Sistema_de_Avaliacao_de_Filmes
+        ```
+
 
 2.  **Compile o projeto:**
     * Dentro da pasta do projeto (`TrabalhoPDS2`), utilize o comando `make` para compilar o código-fonte.
