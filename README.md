@@ -66,7 +66,7 @@ A estrutura de diretórios planejada para o projeto é:
         ```bash
         cd TrabalhoPDS2
         ```
-    * Depois nsa pasta principal :
+    * Depois na pasta principal :
       
         ```bash
         cd Sistema_de_Avaliacao_de_Filmes
