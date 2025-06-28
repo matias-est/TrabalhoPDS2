@@ -1,9 +1,11 @@
 #include "banco_de_dados.h"
 #include <iostream>
-#include <limits> 
+#include <limits>
+#include <cstdlib>
+#include <ctime>
+#include <string>
 
 using namespace std;
-
 
 void limparBufferEntrada()
 {
@@ -16,21 +18,35 @@ void pauseSistema()
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
+int lerOpcaoSegura()
+{
+    int opcao;
+    while (!(cin >> opcao))
+    {
+        cout << "Entrada inválida. Por favor, digite um número: ";
+        cin.clear();
+        limparBufferEntrada();
+    }
+    limparBufferEntrada();
+    return opcao;
+}
+
 int main()
 {
-    BancoDeDados bd;          
-    string nomePublicoLogado; 
+    BancoDeDados bd;
+    string nomePublicoLogado;
     int opcao;
     bool logado = false;
+    bool terminarPrograma = false;
+
+    srand(static_cast<unsigned int>(time(NULL)));
 
     cout << "🎬 Bem-vindo ao Sistema de Avaliação de Filmes 🎬\n";
 
-    
     do
     {
         cout << "\n1. Criar Conta\n2. Login\n3. Sair\nEscolha: ";
-        cin >> opcao;
-        limparBufferEntrada(); 
+        opcao = lerOpcaoSegura();
 
         if (opcao == 1)
         {
@@ -42,7 +58,7 @@ int main()
             cout << "Senha: ";
             getline(cin, senha);
 
-            string nomePublicoGerado; 
+            string nomePublicoGerado;
             if (bd.criarConta(nomeCompleto, dataNascimento, senha, nomePublicoGerado))
             {
                 cout << "Conta criada! Seu nome de usuário é: " << nomePublicoGerado << "\n";
@@ -56,7 +72,7 @@ int main()
         {
             string senha;
             cout << "Nome de usuário: ";
-            getline(cin, nomePublicoLogado); 
+            getline(cin, nomePublicoLogado);
             cout << "Senha: ";
             getline(cin, senha);
 
@@ -64,38 +80,47 @@ int main()
             {
                 cout << "Login bem-sucedido! Bem-vindo(a), " << nomePublicoLogado << "!\n";
                 logado = true;
-                break; 
+                break;
             }
             else
             {
                 cout << "Falha no login. Nome de usuário ou senha incorretos.\n";
             }
         }
-        else if (opcao != 3)
-        { 
+        else if (opcao == 3)
+        {
+            terminarPrograma = true;
+        }
+        else
+        {
             cout << "Opção inválida. Tente novamente.\n";
         }
-        pauseSistema(); 
-    } while (opcao != 3);
 
-    
-    if (logado)
+        if (!terminarPrograma && !logado)
+        {
+            pauseSistema();
+        }
+    } while (opcao != 3 && !terminarPrograma);
+
+    if (logado && !terminarPrograma)
     {
         do
         {
             cout << "\nMenu:\n1. Cadastrar Filme\n2. Avaliar Filme\n3. Comentar Filme\n4. Ver Informações do Filme\n5. Listar Filmes por Categoria\n6. Logout\nEscolha: ";
-            cin >> opcao;
-            limparBufferEntrada(); 
+            opcao = lerOpcaoSegura();
+
             if (opcao == 1)
             {
-                string titulo, genero, dataLancamento; 
+                string titulo, genero, dataLancamento;
                 cout << "Título: ";
                 getline(cin, titulo);
                 cout << "Gênero: ";
                 getline(cin, genero);
-                cout << "Data de lançamento (DD/MM/AAAA): "; 
+                cout << "Data de lançamento (DD/MM/AAAA): ";
                 getline(cin, dataLancamento);
-                bd.adicionarFilme(Filme(titulo, genero, dataLancamento));
+                bd.adicionarFilme(new Filme(titulo, genero, dataLancamento));
+                cout << "Filme cadastrado.\n";
+                pauseSistema();
             }
             else if (opcao == 2)
             {
@@ -103,26 +128,33 @@ int main()
                 int nota;
                 cout << "Título do filme para avaliar: ";
                 getline(cin, titulo);
-                Filme *filme = bd.buscarFilme(titulo); 
+                Filme *filme = bd.buscarFilme(titulo);
                 if (filme)
                 {
                     cout << "Nota (1 a 5): ";
-                    cin >> nota;
-                    limparBufferEntrada(); 
-                    filme->adicionarAvaliacao(nomePublicoLogado, nota);
-                    cout << "Avaliação adicionada.\n";
+                    nota = lerOpcaoSegura();
+                    if (nota >= 1 && nota <= 5)
+                    {
+                        filme->adicionarAvaliacao(nomePublicoLogado, nota);
+                        cout << "Avaliação adicionada.\n";
+                    }
+                    else
+                    {
+                        cout << "Nota inválida. Deve estar entre 1 e 5.\n";
+                    }
                 }
                 else
                 {
                     cout << "Filme não encontrado.\n";
                 }
+                pauseSistema();
             }
             else if (opcao == 3)
             {
                 string titulo, comentario;
                 cout << "Título do filme para comentar: ";
                 getline(cin, titulo);
-                Filme *filme = bd.buscarFilme(titulo); 
+                Filme *filme = bd.buscarFilme(titulo);
                 if (filme)
                 {
                     cout << "Comentário: ";
@@ -134,13 +166,14 @@ int main()
                 {
                     cout << "Filme não encontrado.\n";
                 }
+                pauseSistema();
             }
             else if (opcao == 4)
             {
                 string titulo;
                 cout << "Título do filme para ver informações: ";
                 getline(cin, titulo);
-                Filme *filme = bd.buscarFilme(titulo); 
+                Filme *filme = bd.buscarFilme(titulo);
                 if (filme)
                 {
                     filme->exibirInformacoes();
@@ -149,6 +182,7 @@ int main()
                 {
                     cout << "Filme não encontrado.\n";
                 }
+                pauseSistema();
             }
             else if (opcao == 5)
             {
@@ -156,18 +190,20 @@ int main()
                 cout << "Digite o gênero para listar: ";
                 getline(cin, genero);
                 bd.listarFilmesPorCategoria(genero);
-            }
-            else if (opcao != 6)
-            { 
-                cout << "Opção inválida. Tente novamente.\n";
-            }
-            if (opcao != 6 && opcao != 3)
-            { 
                 pauseSistema();
             }
-        } while (opcao != 6); 
+            else if (opcao == 6)
+            {
+            }
+            else
+            {
+                cout << "Opção inválida. Tente novamente.\n";
+                pauseSistema();
+            }
+        } while (opcao != 6 && !terminarPrograma);
     }
 
     cout << "Encerrando programa.\n";
+    pauseSistema();
     return 0;
 }

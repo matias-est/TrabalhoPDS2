@@ -1,6 +1,7 @@
 CXX = g++
 
-CXXFLAGS = -std=c++11 -Wall -Wextra -pedantic -Isrc
+# Alterado para C++17 para suportar "decomposition declarations" e outras features modernas.
+CXXFLAGS = -std=c++17 -Wall -Wextra -pedantic -Isrc
 
 SRCDIR = src
 
