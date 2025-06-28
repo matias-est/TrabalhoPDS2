@@ -17,6 +17,7 @@ O nosso Sistema de Avaliação de Filmes será desenvolvido em C++ e operado via
 
 As funcionalidades principais incluem:
 * Cadastro de novos filmes (título e gênero).
+* Geração de nome de usuário com base em personagem de filme mais o sobrenome do usuário.
 * Avaliação de filmes existentes (notas de 1 a 5).
 * Inclusão de comentários sobre os filmes.
 * Visualização de informações detalhadas dos filmes: avaliações individuais, comentários e a média das notas.
@@ -46,7 +47,7 @@ A estrutura de diretórios planejada para o projeto é:
 ---
 ## 🔧 Instruções de Instalação
 
-### ✔️ Pré-requisitos:
+### ✔️ Pré-requisitos
 
 * C++11 ou superior.
 * Compilador g++ (ou outro compatível com C++11).
@@ -72,7 +73,6 @@ A estrutura de diretórios planejada para o projeto é:
         cd Sistema_de_Avaliacao_de_Filmes
         ```
 
-
 2.  **Compile o projeto:**
     * Dentro da pasta do projeto (`TrabalhoPDS2`), utilize o comando `make` para compilar o código-fonte.
       
@@ -88,7 +88,6 @@ A estrutura de diretórios planejada para o projeto é:
         ./avaliador
         ```
 
----
 ## 🤝 Como Contribuir
 
 Se desejar contribuir ou reportar problemas:
