@@ -6,6 +6,9 @@
 #include "usuario.h"
 #include "filme.h"
 
+// Função auxiliar global para normalização de títulos (declaração)
+std::string normalizarTitulo(const std::string &titulo);
+
 // Banco de dados que guarda todos os usuários e filmes da plataforma.
 class BancoDeDados{
 public:
