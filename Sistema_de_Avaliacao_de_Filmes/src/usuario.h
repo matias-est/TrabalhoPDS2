@@ -2,32 +2,35 @@
 #define USUARIO_H
 
 #include <string>
+#include <map>
 
 class Usuario {
 public:
-    // Construtor que recebe dados reais do usuário
     Usuario(const std::string& nomeCompleto, const std::string& dataNascimento, const std::string& senha);
 
-    // Retorna o nome público (com anonimato parcial)
     std::string getNomePublico() const;
-
-    // Verifica se a senha está correta
     bool autenticar(const std::string& senhaTentativa) const;
-
     std::string getNomeCompleto() const;
     std::string getDataNascimento() const;
+
+    // NOVO: método para obter a senha (para salvar no arquivo)
+    std::string getSenha() const;
+
+    // Outros métodos existentes
+    void registrarAvaliacao(const std::string& tituloFilme, int nota);
+    const std::map<std::string, int>& getAvaliacoes() const;
+    bool jaAvaliou(const std::string& tituloFilme) const;
 
 private:
     std::string nomeCompleto;
     std::string dataNascimento;
     std::string senha;
-    std::string nomePublico; // Nome anônimo
+    std::string nomePublico;
 
-    // Função auxiliar que gera o nome público (anônimo) com base no sobrenome
-    std::string gerarNomePublico(const std::string& sobrenome) const; 
-
-    // Pega apenas o último sobrenome do nome completo
+    std::string gerarNomePublico(const std::string& sobrenome) const;
     std::string obterSobrenome() const;
+
+    std::map<std::string, int> avaliacoes; // mapa de título → nota
 };
 
 #endif
