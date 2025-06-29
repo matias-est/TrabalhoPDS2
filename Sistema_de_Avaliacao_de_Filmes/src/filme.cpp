@@ -3,6 +3,26 @@
 #include <algorithm> 
 #include <cctype>    
 
+std::string normalizarTitulo(const std::string &titulo) {
+    std::string resultado = titulo;
+    std::transform(resultado.begin(), resultado.end(), resultado.begin(), ::tolower);
+    resultado.erase(remove_if(resultado.begin(), resultado.end(), ::isspace), resultado.end());
+
+    std::vector<std::string> artigos = {"o", "a", "os", "as", "the", "um", "uma", "uns", "umas"};
+    for (const auto &artigo : artigos) {
+        size_t pos;
+        while ((pos = resultado.find(artigo)) != std::string::npos) {
+            if ((pos == 0 || !isalpha(resultado[pos - 1])) && (pos + artigo.length() == resultado.length() || !isalpha(resultado[pos + artigo.length()]))) {
+                resultado.erase(pos, artigo.length());
+            } else {
+                pos += artigo.length();
+            }
+        }
+    }
+
+    return resultado;
+}
+
 Filme::Filme(const std::string &titulo, const std::string &genero, const std::string &dataLancamento)
     : titulo(titulo), genero(genero), dataLancamento(dataLancamento) {}
 
