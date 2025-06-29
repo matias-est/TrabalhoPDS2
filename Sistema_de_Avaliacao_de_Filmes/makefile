@@ -29,4 +29,4 @@ run: $(TARGET)
 	./$(TARGET)
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	del /Q $(subst /,\,$(OBJS)) $(TARGET).exe 2>nul || exit 0
