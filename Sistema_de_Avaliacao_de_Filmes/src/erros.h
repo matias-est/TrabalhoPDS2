@@ -1,5 +1,5 @@
-#ifndef  ERROS_H
-#define  ERROS_H
+#ifndef ERROS_H
+#define ERROS_H
 
 #include <stdexcept>  // Inclui a biblioteca padrão de exceções
 #include <string>     // Necessária para usar std::string
