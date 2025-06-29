@@ -106,4 +106,4 @@ Desenvolvedores:
 * Evandro Eurico Morais Penido
 * Arthur de Almeida Souza
 * Gustavo Marques Mendes
-* Bernardo Marques Mendes
+* Bernardo Marques Nascimento
