@@ -21,3 +21,4 @@ private:
 
 #endif
 
+// Fim do arquivo: Sistema_de_Avaliacao_de_Filmes/src/avaliacao.h
