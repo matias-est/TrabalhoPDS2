@@ -1,50 +1,24 @@
 #include "filme.h"
 #include <iostream>
-#include <algorithm> 
-#include <cctype>    
-
-std::string normalizarTitulo(const std::string &titulo) {
-    std::string resultado = titulo;
-    std::transform(resultado.begin(), resultado.end(), resultado.begin(), ::tolower);
-    resultado.erase(remove_if(resultado.begin(), resultado.end(), ::isspace), resultado.end());
-
-    std::vector<std::string> artigos = {"o", "a", "os", "as", "the", "um", "uma", "uns", "umas"};
-    for (const auto &artigo : artigos) {
-        size_t pos;
-        while ((pos = resultado.find(artigo)) != std::string::npos) {
-            if ((pos == 0 || !isalpha(resultado[pos - 1])) && (pos + artigo.length() == resultado.length() || !isalpha(resultado[pos + artigo.length()]))) {
-                resultado.erase(pos, artigo.length());
-            } else {
-                pos += artigo.length();
-            }
-        }
-    }
-
-    return resultado;
-}
+#include <algorithm>
+#include <cctype>
 
 Filme::Filme(const std::string &titulo, const std::string &genero, const std::string &dataLancamento)
     : titulo(titulo), genero(genero), dataLancamento(dataLancamento) {}
 
-void Filme::adicionarAvaliacao(const std::string &usuario, int nota)
-{
-    if (nota >= 1 && nota <= 5)
-    {
+void Filme::adicionarAvaliacao(const std::string &usuario, int nota) {
+    if (nota >= 1 && nota <= 5) {
         avaliacoes.emplace_back(usuario, nota);
-    }
-    else
-    {
+    } else {
         std::cout << "Nota inválida. Deve estar entre 1 e 5.\n";
     }
 }
 
-void Filme::adicionarComentario(const std::string &comentario)
-{
+void Filme::adicionarComentario(const std::string &comentario) {
     comentarios.push_back(comentario);
 }
 
-double Filme::calcularMedia() const
-{
+double Filme::calcularMedia() const {
     if (avaliacoes.empty())
         return 0.0;
     int soma = 0;
@@ -53,77 +27,71 @@ double Filme::calcularMedia() const
     return static_cast<double>(soma) / avaliacoes.size();
 }
 
-void Filme::exibirInformacoes() const
-{
+void Filme::exibirInformacoes() const {
     std::cout << "\nFilme: " << titulo
               << "\nGênero: " << genero
               << "\nData de Lançamento: " << dataLancamento 
               << "\nMédia das avaliações: " << calcularMedia() << "\n";
     std::cout << "Avaliações:\n";
-    if (avaliacoes.empty())
-    {
+    if (avaliacoes.empty()) {
         std::cout << "  Nenhuma avaliação ainda.\n";
-    }
-    else
-    {
-        for (const auto &a : avaliacoes)
-        {
+    } else {
+        for (const auto &a : avaliacoes) {
             std::cout << "- " << a.getUsuario() << ": Nota " << a.getNota() << "\n";
         }
     }
     std::cout << "Comentários:\n";
-    if (comentarios.empty())
-    {
+    if (comentarios.empty()) {
         std::cout << "  Nenhum comentário ainda.\n";
-    }
-    else
-    {
-        for (const auto &c : comentarios)
-        {
+    } else {
+        for (const auto &c : comentarios) {
             std::cout << "- " << c << "\n";
         }
     }
 }
-std::string Filme::getTitulo() const{
+
+std::string Filme::getTitulo() const {
     return titulo;
 }
 
-std::string Filme::getTituloNormalizado() const{
+std::string Filme::getTituloNormalizado() const {
     std::string resultado = titulo;
     std::transform(resultado.begin(), resultado.end(), resultado.begin(), ::tolower);
     resultado.erase(remove_if(resultado.begin(), resultado.end(), ::isspace), resultado.end());
+
     std::vector<std::string> artigos = {"o", "a", "os", "as", "the", "um", "uma", "uns", "umas"};
-    for (const auto &artigo : artigos){
-        size_t pos;
-        while ((pos = resultado.find(artigo)) != std::string::npos){
-            
-            if ((pos == 0 || !isalpha(resultado[pos - 1])) && (pos + artigo.length() == resultado.length() || !isalpha(resultado[pos + artigo.length()]))){
-                resultado.erase(pos, artigo.length());
-            }
-            else{
-                
-                pos += artigo.length();
+    for (const auto &artigo : artigos) {
+        size_t pos = 0;
+        while ((pos = resultado.find(artigo, pos)) != std::string::npos) {
+            bool inicioOk = (pos == 0 || !isalpha(resultado[pos - 1]));
+            bool fimOk = (pos + artigo.size() == resultado.size() || !isalpha(resultado[pos + artigo.size()]));
+            if (inicioOk && fimOk) {
+                resultado.erase(pos, artigo.size());
+            } else {
+                pos++; // avança para evitar loop infinito
             }
         }
     }
-
     return resultado;
 }
 
-std::string Filme::getGenero() const
-{
+std::string Filme::getGenero() const {
     return genero;
 }
 
-std::string Filme::getDataLancamento() const
-{
+std::string Filme::getDataLancamento() const {
     return dataLancamento;
 }
 
+std::vector<Avaliacao> Filme::getAvaliacoes() const {
+    return avaliacoes;
+}
 
-bool Filme::compararTitulosSimilaridade(const std::string &titulo1, const std::string &titulo2)
-{
-    
+std::vector<std::string> Filme::getComentarios() const {
+    return comentarios;
+}
+
+bool Filme::compararTitulosSimilaridade(const std::string &titulo1, const std::string &titulo2) {
     std::string t1_normalizado = titulo1;
     std::string t2_normalizado = titulo2;
 
@@ -133,6 +101,5 @@ bool Filme::compararTitulosSimilaridade(const std::string &titulo1, const std::s
     t1_normalizado.erase(remove_if(t1_normalizado.begin(), t1_normalizado.end(), ::isspace), t1_normalizado.end());
     t2_normalizado.erase(remove_if(t2_normalizado.begin(), t2_normalizado.end(), ::isspace), t2_normalizado.end());
 
-   
     return t1_normalizado == t2_normalizado;
 }
