@@ -1,4 +1,5 @@
 #include "banco_de_dados.h"
+#include "erros.h"
 #include <iostream>
 #include <limits>
 #include <cstdlib>
@@ -109,19 +110,24 @@ int main()
             cout << "\nMenu:\n1. Cadastrar Filme\n2. Avaliar Filme\n3. Comentar Filme\n4. Ver Informações do Filme\n5. Listar Filmes por Categoria\n6. Logout\nEscolha: ";
             opcao = lerOpcaoSegura();
 
-            if (opcao == 1)
+            else if (opcao == 1)
             {
-                string titulo, genero, dataLancamento;
-                cout << "Título: ";
-                getline(cin, titulo);
-                cout << "Gênero: ";
-                getline(cin, genero);
-                cout << "Data de lançamento (DD/MM/AAAA): ";
-                getline(cin, dataLancamento);
-                bd.adicionarFilme(new Filme(titulo, genero, dataLancamento));
-                cout << "Filme cadastrado.\n";
-                pauseSistema();
+                     string titulo, genero, dataLancamento;
+                     cout << "Título: ";
+                     getline(cin, titulo);
+                     cout << "Gênero: ";
+                     getline(cin, genero);
+                     cout << "Data de lançamento (DD/MM/AAAA): ";
+                     getline(cin, dataLancamento);
+                     try {
+                         bd.adicionarFilme(new Filme(titulo, genero, dataLancamento));
+                         cout << "Filme cadastrado.\n";
+                     } catch (const ErroSistema& e) {
+                         cout << "Erro: " << e.what() << "\n";
+                     }
+                     pauseSistema();
             }
+
             else if (opcao == 2)
             {
                 string titulo;
