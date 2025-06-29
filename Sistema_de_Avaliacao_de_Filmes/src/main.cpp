@@ -15,9 +15,11 @@ void limparBufferEntrada()
 
 void pauseSistema()
 {
-    cout << "\nPressione Enter para continuar...";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "\nPressione Enter para continuar...";
+    cin.get();
 }
+
 
 int lerOpcaoSegura()
 {
@@ -110,7 +112,7 @@ int main()
             cout << "\nMenu:\n1. Cadastrar Filme\n2. Avaliar Filme\n3. Comentar Filme\n4. Ver Informações do Filme\n5. Listar Filmes por Categoria\n6. Logout\nEscolha: ";
             opcao = lerOpcaoSegura();
 
-            else if (opcao == 1)
+            if (opcao == 1)
             {
                      string titulo, genero, dataLancamento;
                      cout << "Título: ";
