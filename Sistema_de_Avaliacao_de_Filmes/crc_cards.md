@@ -2,75 +2,51 @@
 
 ## Classe: Usuário
 - **Responsabilidades:**
-* Gerenciar dados de cadastro (nome completo, data de nascimento, senha) – dados privados.
-* Gerar e armazenar nome do usuário público (Personagem de Filme + Sobrenome).
-* Efetuar login.
-* Registrar uma avaliação para um filme.
-* Escrever um comentário para um filme.
-     
+* Gerenciar dados privados de cadastro (nome completo, data de nascimento, senha).
+* Gerar e fornecer o nome de usuário público (Personagem de Filme + Sobrenome).
+* Autenticar a senha fornecida para login.
+
 - **Colaboradores:**
-* Filme (para associar avaliações e comentários)
-* Avaliacao (para criar métodos de avaliação)
-* Comentario (para criar comentário - se for uma classe separada)
-* BancoDeDados 
-  
+* BancoDeDados (para armazenamento e recuperação de dados de usuário).
+
 ---
 
 ## Classe: Filme
 - **Responsabilidades:**
-* Armazenar informações do filme (título, gênero).
-* Armazenar avaliações recebidas.
-* Armazenar comentários recebidos.
+* Armazenar informações do filme (título, gênero, data de lançamento).
+* Armazenar as avaliações recebidas.
+* Armazenar os comentários recebidos.
 * Calcular e fornecer a média das notas de avaliação.
 * Permitir a adição de novas avaliações.
 * Permitir a adição de novos comentários.
-    
+* Fornecer uma versão normalizada do título para comparações.
+
 - **Colaboradores:**
-* Avaliacao 
-* Comentario 
-* Usuario (para identificar quem fez as avaliações e os comentários)
-* BancoDeDados 
+* Avaliacao (para receber objetos de avaliação).
+* BancoDeDados (para ser armazenado e buscado).
 
 ---
 
 ## Classe: Avaliacao
-
 - **Responsabilidades:**
 * Armazenar a nota (1 a 5).
-* Armazenar a data da avaliação (opcional).
-* Manter referência ao usuário que fez a avaliação.
-* Manter referência ao filme que foi avaliado.
+* Armazenar o nome público do usuário que realizou a avaliação.
 
 - **Colaboradores:**
-* Usuario (para identificar o autor)
-* Filme (para identificar o objeto da avaliação)
-* BancoDeDados
+* Filme (que utiliza o objeto Avaliacao).
+* Usuario (que fornece o nome público).
 
----
-
-## Classe: Comentario (Considerar se será uma classe distinta ou atributo de Avaliacao/Filme)
-- **Responsabilidades:**
-* Armazenar o texto do comentário.
-* Armazenar a data do comentário (opcional).
-* Manter referência ao usuário que fez o comentário.
-* Manter referência ao filme que foi comentado.
-
-- **Colaboradores:**
-* Usuario (para identificar o autor)
-* Filme (para identificar o objeto do comentário)
-  
 ---
 
 ## Classe: BancoDeDados
 - **Responsabilidades:**
-* Gerenciar os dados de todos os usuários cadastrados. 
-* Gerenciar os dados de todos os filmes cadastrados. 
-* Fornecer funcionalidades de busca de filmes (por título, gênero).
-* Garantir que não existirão filmes duplicados. 
-* Processar o login de usuários. 
-* Carregar/Salvar dados. 
-    
-- **Colaboradores:**
-* Usuario 
-* Filme 
+* Gerenciar o armazenamento de todos os usuários cadastrados.
+* Gerenciar o armazenamento de todos os filmes cadastrados.
+* Fornecer funcionalidades de busca de filmes por título (com tolerância a variações) e por gênero.
+* Garantir a unicidade de filmes com títulos similares.
+* Processar a criação de contas de usuário e o login.
+* Gerenciar a memória dos objetos Usuario e Filme alocados dinamicamente.
 
+- **Colaboradores:**
+* Usuario (para criar e autenticar usuários).
+* Filme (para adicionar e buscar filmes).
