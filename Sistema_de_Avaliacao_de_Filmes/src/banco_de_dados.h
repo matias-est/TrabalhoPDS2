@@ -1,41 +1,40 @@
 #ifndef BANCO_DE_DADOS_H
 #define BANCO_DE_DADOS_H
 
-#include <map>
 #include <string>
-#include "usuario.h"
+#include <map>
+#include <set>
+#include <vector>
 #include "filme.h"
+#include "usuario.h"
 
-// Função auxiliar global para normalização de títulos (declaração)
-std::string normalizarTitulo(const std::string &titulo);
-
-// Banco de dados que guarda todos os usuários e filmes da plataforma.
-class BancoDeDados{
+class BancoDeDados {
 public:
-    BancoDeDados();  // Construtor
-    ~BancoDeDados(); // Destrutor para liberar a memória alocada
+    BancoDeDados();
+    ~BancoDeDados();
 
-    // Cria uma nova conta de usuário. Recebe dados pessoais e senha.
-    // Também gera um nome público (com semi-anonimato).
-    // Retorna true se o cadastro foi bem-sucedido, false se o nome já existir.
     bool criarConta(const std::string &nomeCompleto, const std::string &dataNascimento, const std::string &senha, std::string &nomePublico);
-
-    // Autentica um usuário a partir do nome público e da senha fornecida.
     bool autenticar(const std::string &nomePublico, const std::string &senha);
 
-    // Adiciona um novo filme ao mapa de filmes (evitando duplicadas).
-    // Agora recebe um ponteiro para Filme
     void adicionarFilme(Filme *filme);
-
-    // Busca um filme pelo título normalizado.
-    // Retorna um ponteiro para o filme (ou nullptr se não existir).
-    Filme *buscarFilme(const std::string &titulo);
-
-    // Lista todos os filmes que pertencem a uma determinada categoria (gênero).
+    Filme* buscarFilme(const std::string &titulo);
     void listarFilmesPorCategoria(const std::string &genero) const;
 
+    bool salvarDados() const;
+    bool carregarDados();
+
+    std::vector<Filme*> recomendarFilmes(const std::string &nomePublico, int maxRecomendacoes = 5);
+
+    // Novos métodos para controlar avaliações por usuário
+    bool usuarioJaAvaliou(const std::string &nomePublico, const std::string &tituloNormalizado) const;
+    void registrarAvaliacaoUsuario(const std::string &nomePublico, const std::string &tituloNormalizado, int nota);
+
 private:
-    std::map<std::string, Usuario *> usuarios; 
-    std::map<std::string, Filme *> filmes;     
+    std::map<std::string, Usuario*> usuarios; // chave: nomePublico
+    std::map<std::string, Filme*> filmes;     // chave: título normalizado
+
+    // Controle de quais filmes cada usuário já avaliou
+    std::map<std::string, std::set<std::string>> avaliacoesUsuario;
 };
+
 #endif
