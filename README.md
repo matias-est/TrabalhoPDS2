@@ -1,31 +1,36 @@
-# 🎬 Sistema de Avaliação de Filmes 🎬
+# Sistema de Avaliação de Filmes 
+## Apresentação do Problema 
+Atualmente, a indústria cinematográfica foi tomada por sistemas de avaliações de filmes focados na caracterização do avaliador. Ou seja, as pessoas têm avaliado os filmes pensando não só no filme mas também no que as outras pessoas vão pensar sobre a avaliação dela. Por isso, desenvolvemos um sistema que busca preservar o anonimato e a sinceridade, mas ao mesmo tempo permitindo com que cada usuário tenha seu próprio perfil dentro da plataforma.
 
-## 🎞️ Apresentação do Problema 🎞️
+Este projeto visa desenvolver um sistema de avaliação de filmes que busca resgatar a sinceridade e preservar o semi-anonimato do usuário, ao mesmo tempo em que permite a personalização de perfis.
 
-Atualmente a indústria cinematográfica foi tomada por sistemas de avaliações de filmes focados na caracterização do avaliador. Ou seja, as pessoas têm avaliado os filmes pensando não só no filme mas também no que as outras pessoas vão pensar sobre a avaliação dela. Por isso, desenvolvemos um sistema que busca preservar o anonimato e a sinceridade, mas ao mesmo tempo permitindo com que cada usuário tenha seu próprio perfil dentro da plataforma. 
+## Visão Geral da Solução
+O nosso Sistema de Avaliação de Filmes foi desenvolvido em C++ e é operado via interface de terminal. Ele permite que os usuários criem contas fornecendo nome completo e data de nascimento; esses dados pessoais são mantidos em sigilo. Para interação pública, o nome de usuário segue o padrão (personagem de filme) (sobrenome do usuário), buscando um equilíbrio entre personalização e anonimato, garantindo a liberdade para os usuários efetuarem comentários honestos.
 
+## Funcionalidades Implementadas
+Cadastro e Login de Usuários: Criação de contas seguras e sistema de autenticação.
 
-Este projeto visa desenvolver um sistema de avaliação de filmes que busca resgatar a sinceridade e preservar o semi-anonimato do usuário, ao mesmo tempo em que permite a personalização de perfis.  
+Geração de Nomes de Usuário Criativos: Geração automática de um nome público (Personagem Sobrenome) para preservar a identidade do usuário.
 
----
+Cadastro de Filmes: Permite adicionar filmes com Título, Gênero e Data de Lançamento. O sistema evita a duplicidade de filmes com títulos similares.
 
-## 🚀 Visão Geral da Solução
+Avaliação de Filmes: Permite dar notas de 1 a 5. O sistema impede que um usuário avalie o mesmo filme mais de uma vez.
 
+Comentários: Usuários podem adicionar comentários textuais em cada filme.
 
-O nosso Sistema de Avaliação de Filmes será desenvolvido em C++ e operado via interface de terminal de comando. Ele permitirá que os usuários criem contas fornecendo nome completo e data de nascimento; esses dados pessoais serão mantidos em sigilo absoluto pela plataforma. Para interação pública, o nome de usuário seguirá o padrão: `(personagem de filme) (sobrenome do usuário)`, buscando um equilíbrio entre personalização e anonimato. Este equilíbrio é importante para garantir a liberdade dos usuários para efetuarem comentários honestos sem se preocupar com a retaliação de cinéfilos que discordam da mesma.
+Consulta de Filmes:
 
+Busca de filmes por título (com tratamento para ignorar maiúsculas/minúsculas e espaços).
 
-As funcionalidades principais incluem:
-* Cadastro de novos filmes (título e gênero).
-* Geração de nome de usuário com base em personagem de filme mais o sobrenome do usuário.
-* Avaliação de filmes existentes (notas de 1 a 5).
-* Inclusão de comentários sobre os filmes.
-* Visualização de informações detalhadas dos filmes: avaliações individuais, comentários e a média das notas.
-* Busca de filmes por gênero ou por título (com tolerância a pequenas variações para evitar duplicidade e facilitar a busca).
-* O cadastro duplicado de filmes será evitado pelo sistema, mesmo com pequenas variações nos títulos (ex: "Carros" vs "Os Carros").
----
+Listagem de filmes por gênero.
 
-## 🗂️ Estrutura do Projeto
+Visualização de informações detalhadas, incluindo média de notas e todas as avaliações e comentários.
+
+Sistema de Recomendação: Sugere filmes ao usuário com base nas melhores médias de avaliação entre os filmes que ele ainda não avaliou.
+
+Persistência de Dados: Todas as informações (usuários, filmes, avaliações) são salvas em arquivos .txt ao fechar o programa e recarregadas ao iniciar, garantindo que os dados não sejam perdidos entre as sessões.
+
+## Estrutura do Projeto
 
 A estrutura de diretórios planejada para o projeto é:
 
@@ -45,15 +50,15 @@ A estrutura de diretórios planejada para o projeto é:
 ┗ 
 
 ---
-## 🔧 Instruções de Instalação
+## Instruções de Instalação
 
-### ✔️ Pré-requisitos
+###  Pré-requisitos
 
 * C++11 ou superior.
 * Compilador g++ (ou outro compatível com C++11).
 * Makefile.
 
-## ⚙️ Passos para Instalação
+##  Passos para Instalação
 
 1.  **Clone o repositório:**
     * Abra o seu terminal ou prompt de comando.
@@ -88,7 +93,7 @@ A estrutura de diretórios planejada para o projeto é:
         ./avaliador
         ```
 
-## 🤝 Como Contribuir
+## Como Contribuir
 
 Se desejar contribuir ou reportar problemas:
 1.  Para bugs ou sugestões de funcionalidades, crie uma "Issue" no repositório GitHub.
@@ -106,4 +111,4 @@ Desenvolvedores:
 * Evandro Eurico Morais Penido
 * Arthur de Almeida Souza
 * Gustavo Marques Mendes
-* Bernardo Marques Nascimento
+* Bernardo Marques Mendes
