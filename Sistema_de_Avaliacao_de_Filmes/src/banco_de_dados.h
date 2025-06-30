@@ -8,6 +8,33 @@
 #include "filme.h"
 #include "usuario.h"
 
+/*
+    Classe BancoDeDados
+    -------------------
+    Esta classe centraliza todas as operações relacionadas à persistência e ao gerenciamento
+    dos dados do sistema de avaliação de filmes. É responsável por armazenar e gerenciar 
+    usuários, filmes e interações entre eles, como avaliações e autenticação.
+
+    É como o "cérebro" do sistema: concentra o cadastro de usuários, a autenticação,
+    o registro de filmes, a recomendação de novos títulos com base no histórico do usuário,
+    e ainda mantém controle sobre quais filmes já foram avaliados por cada pessoa.
+
+    Funcionalidades principais:
+    - Criar contas de usuários e autenticar logins.
+    - Adicionar e buscar filmes pelo título.
+    - Listar filmes por gênero (categoria).
+    - Salvar e carregar os dados do sistema (para persistência).
+    - Gerar recomendações de filmes para usuários cadastrados.
+    - Registrar e verificar avaliações feitas por usuários.
+
+    Estrutura interna:
+    - Um mapa de usuários, usando o nome público como chave.
+    - Um mapa de filmes, usando o título normalizado como chave.
+    - Um controle de quais filmes cada usuário já avaliou, evitando avaliações duplicadas.
+
+    Essa classe conecta os dados e garante que o sistema funcione de maneira coesa.
+*/
+
 class BancoDeDados {
 public:
     BancoDeDados();
