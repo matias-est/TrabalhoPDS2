@@ -2,15 +2,13 @@
 
 ## Classe: Usuário
 - *Responsabilidades:*
-
 * Gerenciar dados privados (nome completo, data de nascimento, senha).
 * Gerar e fornecer o nome de usuário público (Personagem de Filme + Sobrenome).
-* Autenticar a senha fornecida para login.**
+* Autenticar a senha fornecida para login.
 * Registrar um mapa das avaliações que o próprio usuário fez (título do filme -> nota).
-
 * Fornecer o nome completo e a senha para persistência em arquivo.
 
-- *Colaboradores*
+- *Colaboradores:*
 * BancoDeDados (que cria, armazena e gerencia os objetos Usuario).
 
 ---
@@ -23,7 +21,7 @@
 * Calcular e fornecer a média das notas de avaliação.
 * Adicionar novas avaliações à sua coleção.
 * Adicionar novos comentários à sua coleção.
-* Fornecer uma versão normalizada do título para buscas e comparações
+* Fornecer uma versão normalizada do título para buscas e comparações.
 
 - *Colaboradores:*
 * Avaliacao (para compor sua lista de avaliações).
@@ -55,3 +53,14 @@
 - *Colaboradores:*
 * Usuario (para criar e autenticar usuários).
 * Filme (para adicionar e buscar filmes).
+
+---
+
+## Classe: ErroSistema
+- *Responsabilidades:*
+* Representar erros específicos do sistema por meio de exceções personalizadas.
+* Fornecer mensagens de erro descritivas e contextualizadas para facilitar o tratamento de falhas.
+* Servir como base centralizada para lançar erros em diferentes partes do sistema.
+
+- *Colaboradores:*
+* Todas as classes que podem lançar ou capturar exceções específicas do domínio (ex: BancoDeDados, Usuario, Filme).
