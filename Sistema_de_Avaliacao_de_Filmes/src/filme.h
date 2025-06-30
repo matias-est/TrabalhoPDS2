@@ -5,7 +5,26 @@
 #include <vector>
 #include "avaliacao.h"
 
-// Contém título, gênero, avaliações e comentários.
+/*
+    Classe Filme
+    ------------
+    Esta classe representa um filme e reúne informações básicas como título, gênero e data de lançamento.
+    Além disso, permite armazenar avaliações feitas por usuários (com notas) e comentários livres.
+
+    A ideia é facilitar o gerenciamento de dados de um filme em um sistema que lide com avaliações,
+    como um catálogo ou plataforma de recomendação.
+
+    Funcionalidades principais:
+    - Adicionar uma avaliação (nota) de um usuário.
+    - Adicionar comentários sobre o filme.
+    - Calcular a média das notas recebidas.
+    - Exibir todas as informações do filme de forma organizada.
+    - Acessar diretamente a lista de avaliações e comentários.
+    - Comparar títulos de filmes para verificar similaridade (útil para buscas).
+
+    Observação: esta classe depende da definição da classe Avaliacao (avaliacao.h).
+*/
+
 class Filme {
 public:
     Filme(const std::string &titulo, const std::string &genero, const std::string &dataLancamento);
